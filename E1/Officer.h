@@ -12,7 +12,7 @@ static unordered_map<Gender, string> genderMap{
     {OTHER, "Other"}
 };
 
-class CanBo
+class Officer
 {
     protected:
         string firstName;
@@ -28,11 +28,11 @@ class CanBo
 
         virtual void ShowInfo();
 
-        CanBo() {}
+        Officer() {}
 
-        CanBo(string firstName, string lastName, int age, Gender gender, string address);
+        Officer(string firstName, string lastName, int age, Gender gender, string address);
 
-        ~CanBo() {}
+        virtual ~Officer() {}
 };
 
 

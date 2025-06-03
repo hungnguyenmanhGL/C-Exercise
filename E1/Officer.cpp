@@ -1,6 +1,6 @@
-#include "CanBo.h"
+#include "Officer.h"
 
-void CanBo::ShowInfo() {
+void Officer::ShowInfo() {
     printf("First name: %s\n"
         "Last name: %s\n"
         "Age: %d\n"
@@ -8,7 +8,7 @@ void CanBo::ShowInfo() {
         "Address: %s\n", firstName.c_str(), lastName.c_str(), age, genderMap[gender].c_str(), address.c_str());
 }
 
-CanBo::CanBo(string firstName, string lastName, int age, Gender gender, string address) {
+Officer::Officer(string firstName, string lastName, int age, Gender gender, string address) {
     this->firstName = firstName;
     this->lastName = lastName;
     this->age = age;
@@ -16,10 +16,10 @@ CanBo::CanBo(string firstName, string lastName, int age, Gender gender, string a
     this->address = address;
 }
 
-string CanBo::GetFirstName() const {
+string Officer::GetFirstName() const {
     return this->firstName;
 }
 
-string CanBo::GetLastName() const {
+string Officer::GetLastName() const {
     return this->lastName;
 }
