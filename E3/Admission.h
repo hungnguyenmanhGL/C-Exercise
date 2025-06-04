@@ -3,15 +3,15 @@
 #include <memory>
 #include "Student.h"
 using namespace std;
-class TuyenSinh
+class Admission
 {
 private:
 	vector<shared_ptr<Student>> studentList;
 
 public:
-	TuyenSinh();
+	Admission();
 
-	~TuyenSinh();
+	~Admission();
 
 	void ShowInfo();
 

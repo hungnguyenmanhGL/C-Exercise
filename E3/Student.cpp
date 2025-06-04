@@ -8,6 +8,10 @@ void Student::ShowInfo() {
 		block, blockMap.at(block)[0].c_str(), blockMap.at(block)[1].c_str(), blockMap.at(block)[2].c_str());
 }
 
+bool Student::IsValidBlock(const char block) {
+	return blockMap.find(block) != blockMap.end();
+}
+
 Student::Student(string id, string name, string address, int priority, char block)
 	: id(id), name(name), address(address), priority(priority), block(block) {
 	if (blockMap.find(block) == blockMap.end()) {

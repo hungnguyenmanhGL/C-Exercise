@@ -36,6 +36,8 @@ public:
 
 	void ShowInfo();
 
+	static bool IsValidBlock(const char c);
+
 	~Student();
 
 	string GetId() const;

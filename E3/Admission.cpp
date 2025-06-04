@@ -1,19 +1,19 @@
-#include "TuyenSinh.h"
+#include "Admission.h"
 #include <iostream>
 using namespace std;
 
-void TuyenSinh::ShowInfo() {
+void Admission::ShowInfo() {
 	for (shared_ptr<Student>& s : studentList) {
 		s->ShowInfo();
 	}
 	cout << "End Of List" << endl;
 }
 
-void TuyenSinh::AddStudent(shared_ptr<Student> student) {
+void Admission::AddStudent(shared_ptr<Student> student) {
 	studentList.push_back(student);
 }
 
-shared_ptr<Student> TuyenSinh::GetById(const string& id) {
+shared_ptr<Student> Admission::GetById(const string& id) {
 	for (shared_ptr<Student>& s : studentList) {
 		if (s->GetId()._Equal(id)) {
 			return s;
@@ -23,6 +23,6 @@ shared_ptr<Student> TuyenSinh::GetById(const string& id) {
 	return nullptr;
 }
 
-TuyenSinh::TuyenSinh() {}
+Admission::Admission() {}
 
-TuyenSinh::~TuyenSinh() {}
+Admission::~Admission() {}
