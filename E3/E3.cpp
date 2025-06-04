@@ -11,61 +11,16 @@ static enum Command {
 
 Admission ad;
 
-void InputAdd() {
-	cout << "Id: ";
-	string id;
-	cin.ignore();
-	getline(cin, id);
-
-	cout << "Name: ";
-	string lastName;
-	getline(cin, lastName);
-
-	int age;
-	do {
-		cout << "Age: ";
-		cin >> age;
-		if (age <= 0) cout << "Invalid age. Try again." << endl;
-	} while (age <= 0);
-
-	cout << "Address: ";
-	string address;
-	cin.ignore();
-	getline(cin, address);
-
-	int priority;
-	cout << "Priority: ";
-	cin >> priority;
-
-	char block;
-	do {
-		cout << "Block (valid block is A/B/C): ";
-		cin >> block;
-		if (!Student::IsValidBlock(block)) cout << "Invalid block." << endl;
-	} while (!Student::IsValidBlock(block));
-
-	ad.AddStudent(shared_ptr<Student>(new Student(id, lastName, address, priority, block)));
-	cout << "Added new student." << endl;
-}
-
-void InputSearch(const string id) {
-	shared_ptr<Student> res = ad.GetById(id);
-	if (res == nullptr) {
-		cout << "0 match found for id " << id << endl;
-		return;
-	}
-	res->ShowInfo();
-}
-
-void Input() {
+void MainLoop() {
 	while (true) {
 		cout << "Input command (0 = add/1 = show/2 = search/ -1 = quit): ";
 		int cmd = -1;
 		cin >> cmd;
+		cin.ignore();
 		switch (cmd) {
 		case ADD:
 		{
-			InputAdd();
+			ad.AddStudentByInput();
 			break;
 		}
 
@@ -77,11 +32,7 @@ void Input() {
 
 		case SEARCH:
 		{
-			cout << "Id to search: ";
-			string id;
-			cin.ignore();
-			getline(cin, id);
-			InputSearch(id);
+			ad.SearchIdByInput();
 			break;
 		}
 
@@ -104,5 +55,6 @@ void Input() {
 
 int main()
 {
-	Input();
+	MainLoop();
+	return 0;
 }

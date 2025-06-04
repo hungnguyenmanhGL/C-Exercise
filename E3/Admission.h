@@ -17,6 +17,10 @@ public:
 
 	void AddStudent(shared_ptr<Student> student);
 
+	void AddStudentByInput();
+
+	void SearchIdByInput();
+
 	shared_ptr<Student> GetById(const string& id);
 };
 

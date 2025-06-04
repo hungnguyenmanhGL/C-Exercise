@@ -6,6 +6,16 @@
 #include <array>
 using namespace std;
 
+static enum Block {
+	A = 0,
+	B = 1,
+	C = 2
+};
+
+static const char blockA = 'A';
+static const char blockB = 'B';
+static const char blockC = 'C';
+
 static const string TOAN = "Toan";
 static const string LY = "Ly";
 static const string HOA = "Hoa";
@@ -15,31 +25,28 @@ static const string SU = "Su";
 static const string DIA = "Dia";
 
 static const unordered_map<char, array<string, 3>> blockMap {
-	{'A', {TOAN, LY, HOA}},
-	{'B', {TOAN, HOA, SINH}},
-	{'C', {VAN, SU, DIA}}
+	{blockA, {TOAN, LY, HOA}},
+	{blockB, {TOAN, HOA, SINH}},
+	{blockC, {VAN, SU, DIA}}
 };
 
 class Student
 {
-private:
+protected:
 	string id;
 	string name;
 	string address;
 	int priority;
-	char block;
 
 public:
 	Student();
 
-	Student(string id, string name, string address, int priority, char block);
+	Student(string id, string name, string address, int priority);
 
-	void ShowInfo();
+	virtual ~Student();
 
-	static bool IsValidBlock(const char c);
+	virtual void ShowInfo();
 
-	~Student();
-
-	string GetId() const;
+	string GetId();
 };
 
