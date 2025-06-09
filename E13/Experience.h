@@ -15,5 +15,12 @@ public:
     ~Experience();
 
     void ShowInfo() override;
+
+    void ShowEditPrompt() override;
+
+    //setters
+    void SetExpYear(const int& year) { this->expYear = year; }
+
+    void SetProSkill(const string& skill) { this->proSkill = skill; }
 };
 

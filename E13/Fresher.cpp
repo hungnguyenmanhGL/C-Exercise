@@ -16,7 +16,12 @@ void Fresher::ShowInfo() {
     Employee::ShowInfo();
     printf("Fresher-specific: \n"
         " Graduation date: %s\n"
-        " Graduation rank: %d\n"
+        " Graduation rank: %s\n"
         " Education: %s\n",
         graduationDate.ToString().c_str(), graduationRank.c_str(), education.c_str());
+}
+
+void Fresher::ShowEditPrompt() {
+    Employee::ShowEditPrompt();
+    printf("Fresher-specific: 20 = graduation date, 21 = graduation rank, 22 = education.\n Input: ");
 }

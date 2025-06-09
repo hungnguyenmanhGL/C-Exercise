@@ -18,5 +18,14 @@ public:
     ~Fresher();
 
     void ShowInfo() override;
+
+    void ShowEditPrompt() override;
+
+    //setter
+    void SetGraduationDate(const Date& date) { this->graduationDate = graduationDate; }
+
+    void SetGraduationRank(const string& rank) { this->graduationRank = rank; }
+
+    void SetEducation(const string& edu) { this->education = edu; }
 };
 

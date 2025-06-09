@@ -20,3 +20,8 @@ void Intern::ShowInfo() {
         " University: %s\n",
         major.c_str(), semester, university.c_str());
 }
+
+void Intern::ShowEditPrompt() {
+    Employee::ShowEditPrompt();
+    printf("Intern-specific: 10 = major, 11 = semester, 12 = university.\n Input: ");
+}

@@ -17,5 +17,14 @@ public:
     ~Intern();
 
     void ShowInfo() override;
+
+    void ShowEditPrompt() override;
+
+    //setter
+    void SetMajor(const string& major) { this->major = major; }
+    
+    void SetSemester(const int& semester) { this->semester = semester; }
+
+    void SetUniversity(const string& university) { this->university = university; }
 };
 

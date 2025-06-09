@@ -2,32 +2,24 @@
 #include "Manager.h"
 #include "Employee.h"
 #include "Intern.h"
+#include "Helper.h"
 
 int Employee::count = 0;
-
-static enum Command {
-    ADD = 0,
-    SHOW = 1,
-    SEARCH = 2,
-    QUIT = -1
-};
 
 void MainLoop() {
 	Manager manager;
 
 	while (true) {
-		cout << "Input command (0 = add/1 = show/ -1 = quit): ";
+		cout << "Input command (0 = add/1 = show/2 = search & edit/ -1 = quit): ";
 		int cmd = -1;
 		cin >> cmd;
 		cin.ignore();
 		switch (cmd) {
-		case ADD:
+		case Command::ADD:
 		{
 			int n;
-			cout << "Number of employee to add: ";
-			cin >> n;
-			cin.ignore();
-			if (n <= 0) cout << "Invalid number. Try again";
+			cout << "Number of employee to add. ";
+			n = Helper::GetIntByInput(0);
 
 			for (int i = 0; i < n; i++) {
 				manager.AddByInput();
@@ -35,13 +27,41 @@ void MainLoop() {
 			break;
 		}
 
-		case SHOW:
+		case Command::SHOW:
 		{
-			manager.ShowInfo();
+			int employType;
+			printf("Input employee type to show (%d = %s, %d = %s, %d = %s, others = all): ",
+				EmployeeType::INTERN, employTypeMap[EmployeeType::INTERN].c_str(),
+				EmployeeType::FRESHER, employTypeMap[EmployeeType::FRESHER].c_str(),
+				EmployeeType::EXPERIENCE, employTypeMap[EmployeeType::EXPERIENCE].c_str());
+			cin >> employType;
+			cin.ignore();
+
+			switch (employType)
+			{
+			case EmployeeType::INTERN:
+				manager.ShowInfoByType(EmployeeType::INTERN);
+				break;
+			case EmployeeType::FRESHER:
+				manager.ShowInfoByType(EmployeeType::FRESHER);
+				break;
+			case EmployeeType::EXPERIENCE:
+				manager.ShowInfoByType(EmployeeType::EXPERIENCE);
+				break;
+			default:
+				manager.ShowInfo();
+				break;
+			}
 			break;
 		}
 
-		case QUIT:
+		case Command::SEARCH: {
+			manager.SearchByInput();
+			break;
+		}
+			
+
+		case Command::QUIT:
 		{
 			cout << "Quitting..." << endl;
 			break;

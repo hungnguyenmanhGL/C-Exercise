@@ -18,3 +18,8 @@ void Experience::ShowInfo() {
 		" Professional skill: %s\n",
 		expYear, proSkill.c_str());
 }
+
+void Experience::ShowEditPrompt() {
+	Employee::ShowEditPrompt();
+	printf("Experience-specific: 30 = year of experience, 31 = professional skill.\n Input: ");
+}

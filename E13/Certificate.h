@@ -7,16 +7,18 @@ class Certificate
 private:
 	string id;
 	string name;
-	int rank;
+	string rank;
 	Date date;
 
 public:
 	Certificate() {};
 
-	Certificate(string id, string name, int rank, Date date);
+	Certificate(string id, string name, string rank, Date date);
 
 	~Certificate() {};
 
 	void ShowInfo();
+
+	void EditByInput();
 };
 
