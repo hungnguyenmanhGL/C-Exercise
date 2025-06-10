@@ -9,3 +9,7 @@
 *.db-wal
 *.opendb
 *.ipch
+*.suo
+*.json
+x64/
+E14/E14/
