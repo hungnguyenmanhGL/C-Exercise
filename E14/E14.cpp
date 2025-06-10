@@ -1,6 +1,11 @@
 #include <iostream>
+#include "Manager.h"
+
+const string path = "Input/data.txt";
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Manager manager;
+    manager.ReadFromFile(path);
+    return 0;
 }

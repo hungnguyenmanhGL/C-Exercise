@@ -10,5 +10,5 @@ void Student::ShowInfo() {
 		" Phone: %s\n"
 		" University: %s\n"
 		" Grade level: %d\n",
-		fullName.c_str(), doB.ToString().c_str(), genderMap[gender].c_str(), phone.c_str(), university.c_str(), gradeLevel);
+		fullName.c_str(), doB.ToString().c_str(), genderMap.at(gender).c_str(), phone.c_str(), university.c_str(), gradeLevel);
 }

@@ -4,7 +4,7 @@ class NormalStudent :
     public Student
 {
 private: 
-    int englishScore; //is TOEIC score
+    int englishScore; //is TOEIC score, 0 <= value <= 990
     int entryScore; // 0 <= value <= 10
 
 public:

@@ -1,0 +1,89 @@
+Full name: Nguyen Van A
+Date of birth: 15/07/2002
+Gender: 0
+Phone: 0901234567
+University: National University of Technology
+Grade level: 3
+GPA: 3.8
+Best Reward: Excellent Student Award 2023
+--------------------------------------------------
+Full name: Tran Thi B
+Date of birth: 20/01/2001
+Gender: 1
+Phone: 0917654321
+University: Foreign Trade University
+Grade level: 4
+GPA: 3.95
+Best Reward: Scholarship for Academic Excellence
+--------------------------------------------------
+Full name: Le Duc C
+Date of birth: 05/11/2003
+Gender: 0
+Phone: 0382345678
+University: FPT University
+Grade level: 2
+GPA: 3.7
+Best Reward: First Prize in National Programming Contest
+--------------------------------------------------
+Full name: Pham Thanh D
+Date of birth: 10/04/2002
+Gender: 1
+Phone: 0358765432
+University: RMIT University Vietnam
+Grade level: 3
+GPA: 3.6
+Best Reward: Dean's List Honoree
+--------------------------------------------------
+Full name: Hoang Van E
+Date of birth: 28/09/2000
+Gender: 0
+Phone: 0981122334
+University: University of Economics
+Grade level: 5
+GPA: 3.85
+Best Reward: Innovation Challenge Winner
+--------------------------------------------------
+Full name: Nguyen Thi F
+Date of birth: 01/02/2003
+Gender: 1
+Phone: 0909876543
+University: Hanoi University of Science
+Grade level: 2
+English score: 750
+Entry score: 7
+--------------------------------------------------
+Full name: Tran Van G
+Date of birth: 12/05/2002
+Gender: 0
+Phone: 0381112223
+University: Hanoi Medical University
+Grade level: 3
+English score: 680
+Entry score: 8
+--------------------------------------------------
+Full name: Phan Hoang H
+Date of birth: 08/08/2001
+Gender: 0
+Phone: 0915554443
+University: Vietnam National University, HCMC
+Grade level: 4
+English score: 810
+Entry score: 6
+--------------------------------------------------
+Full name: Do Thi I
+Date of birth: 03/10/2004
+Gender: 1
+Phone: 0359998887
+University: Hanoi Architectural University
+Grade level: 1
+English score: 620
+Entry score: 7
+--------------------------------------------------
+Full name: Vu Long K
+Date of birth: 22/06/2000
+Gender: 0
+Phone: 0987776665
+University: University of Natural Sciences
+Grade level: 5
+English score: 700
+Entry score: 9

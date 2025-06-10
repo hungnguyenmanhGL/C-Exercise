@@ -4,6 +4,30 @@
 #include "EmailException.h"
 #include "FullNameException.h"
 
+string Helper::RemoveSpacesAtEnds(string& s) {
+	size_t first = s.find_first_not_of(whiteSpaces);
+	size_t last = s.find_first_not_of(whiteSpaces);
+	if (first != string::npos && last != string::npos && last > first)
+		s = s.substr(first, last - first + 1);
+	return s;
+}
+
+Date Helper::GetDateByString(const string& s) {
+	int day, month, year;
+	day = atoi(s.substr(0, 2).c_str());
+	month = atoi(s.substr(3, 2).c_str());
+	year = atoi(s.substr(6, 4).c_str());
+
+	try {
+		bool isValid = IsDateValid(day, month, year);
+		if (!isValid) throw DateException("Invalid date.\n");
+	} 
+	catch (const DateException& dateExcept) {
+		cout << dateExcept.what();
+	}
+	return Date(day, month, year);
+}
+
 Date Helper::GetDateByInput() {
 	int day, month, year;
 	bool isValidDate = false;
@@ -111,11 +135,11 @@ int Helper::GetIntByInput(int lowerLim, int upperLim) {
 
 bool Helper::IsFullNameValid(const string& name) {
 	if (name.length() < 6) {
-		cout << "Full name can't be fewer than 6 characters. Try again" << endl;
+		throw FullNameException("Min length for full name is 6 characters.\n");
 		return false;
 	}
 	if (name.length() > 50) {
-		cout << "Max length for full name is 50 characters. Try again" << endl;
+		throw FullNameException("Max length for full name is 50 characters.\n");
 		return false;
 	}
 	return true;
@@ -127,7 +151,7 @@ bool Helper::IsDateValid(int day, int month, int year) {
 		return false;
 	}
 	if (year < 1500) {
-		cout << "Year < 1500" << endl;
+		cout << "Year " << year << " < 1500" << endl;
 		return false;
 	}
 	if (day > 31 || month > 12) {
@@ -194,4 +218,30 @@ bool Helper::IsEmailValid(const string& email) {
 bool Helper::Is31DayMonth(int month) {
 	return month == 1 || month == 3 || month == 5 || month == 7 || month == 8
 		|| month == 10 || month == 12;
+}
+
+bool Helper::IsDateFormat(const string& s) {
+	if (s.length() != 10) return false;
+
+	if (s[2] != '/' || s[5] != '/') return false;
+	
+	if (!IsStringInt(s.substr(0, 2))) { 
+		return false;
+	}
+	if (!IsStringInt(s.substr(3, 2))) {
+		return false;
+	}
+	if (!IsStringInt(s.substr(6, 4))) {
+		return false;
+	}
+	return true;
+}
+
+bool Helper::IsStringInt(const string& s) {
+	if (s.empty()) return false;
+	//if even 1 character is not a digit -> can't be int
+	for (char c : s) {
+		if (!isdigit(c)) return false;
+	}
+	return true;
 }

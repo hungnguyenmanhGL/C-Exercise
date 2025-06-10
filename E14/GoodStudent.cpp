@@ -5,5 +5,5 @@ GoodStudent::GoodStudent(string name, Date doB, Gender gender, string phone, str
 
 void GoodStudent::ShowInfo() {
 	Student::ShowInfo();
-	printf(" GPA: %f\n Best reward: %s\n", gpa, bestReward.c_str());
+	printf(" GPA: %.2f\n Best reward: %s\n", gpa, bestReward.c_str());
 }

@@ -10,7 +10,6 @@ private:
 public:
     DateException(const string msg) : msg(msg) {}
 
-    // Override what() method, marked noexcept for modern C++
     const char* what() const noexcept {
         return msg.c_str();
     }
