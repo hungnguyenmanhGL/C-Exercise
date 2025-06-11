@@ -45,29 +45,13 @@ static const unordered_map<Data, string> dataTagMap{
 };
 
 static enum Command {
-	ADD = 0,
-	SHOW = 1,
-	SEARCH = 2,
+	GET = 0,
+	SHOW_CONTACT_ALL = 1,
 	QUIT = -1
-};
-
-static enum SearchSubCommand {
-	BACK = -1,
-	EDIT = 0,
-	SUB_DELETE = 1,
-	SUB_ADD = 2
 };
 
 const unordered_set<string> phoneStarterSet{
 	"090", "098", "091", "031", "035", "038"
-};
-
-const unordered_set<string> emailEndSet{
-	".com", ".net", ".org"
-};
-
-const unordered_set<char> invalidCharSet{
-	'/', ',', '[', ']', '(', ')', '{', '}', ':', ';', '|'
 };
 
 class Helper
@@ -81,11 +65,9 @@ public:
 
 	static string GetPhoneByInput();
 
-	static string GetEmailByInput();
-
 	static string RemoveSpacesAtEnds(string& s);
 
-	//Input lowerThan <= value <= biggerThan .If lowerThan < biggerThan -> no upper limit
+	//Input biggerThan <= value <= lowerThan .If lowerThan < biggerThan -> no upper limit
 	static int GetIntByInput(int biggerThan, int lowerThan = -1);
 
 	static bool IsFullNameValid(const string& name);
@@ -93,8 +75,6 @@ public:
 	static bool IsDateValid(int day, int month, int year);
 
 	static bool IsPhoneValid(const string& phone);
-
-	static bool IsEmailValid(const string& email);
 
 	static bool Is31DayMonth(int month);
 

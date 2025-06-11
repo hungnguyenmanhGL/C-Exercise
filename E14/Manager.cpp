@@ -4,6 +4,42 @@
 #include "PhoneException.h"
 #include "GoodStudent.h"
 #include "NormalStudent.h"
+#include <queue>
+
+struct GradeComparator {
+	bool operator()(shared_ptr<Student>& a, shared_ptr<Student>& b) {
+		if (a->IsGood() && !b->IsGood())
+			return false;
+		else if (!a->IsGood() && b->IsGood())
+			return true;
+
+		if (a->IsGood() && b->IsGood()) {
+			shared_ptr<GoodStudent> goodA = dynamic_pointer_cast<GoodStudent>(a);
+			shared_ptr<GoodStudent> goodB = dynamic_pointer_cast<GoodStudent>(b);
+			if (goodA->GetGpa() != goodB->GetGpa()) return goodA->GetGpa() < goodB->GetGpa();
+			else return goodA->GetFullName() > b->GetFullName();
+		}
+		if (!a->IsGood() && !b->IsGood()) {
+			shared_ptr<NormalStudent> normalA = dynamic_pointer_cast<NormalStudent>(a);
+			shared_ptr<NormalStudent> normalB = dynamic_pointer_cast<NormalStudent>(b);
+			if (normalA->GetEntryScore() != normalB->GetEntryScore()) return normalA->GetEntryScore() < normalB->GetEntryScore();
+			else {
+				if (normalA->GetEnglishScore() != normalB->GetEnglishScore()) return normalA->GetEnglishScore() < normalB->GetEnglishScore();
+				else return normalA->GetFullName() > normalB->GetFullName();
+			}
+		}
+		return false;
+	}
+};
+
+struct DataComparator {
+	bool operator()(shared_ptr<Student>& a, shared_ptr<Student>& b) {
+		if (a->GetFullName()._Equal(b->GetFullName())) //if same name, compare by phone number
+			return a->GetPhone() > b->GetPhone();
+		else 
+			return a->GetFullName() < b->GetFullName();
+	}
+};
 
 void Manager::ReadFromFile(const string& path) {
 	ifstream inputFile(path);
@@ -12,7 +48,6 @@ void Manager::ReadFromFile(const string& path) {
 		return;
 	}
 
-	int goodCnt = 0, normalCnt = 0;
 	string line;
 	string name;
 	Date dob;
@@ -24,8 +59,6 @@ void Manager::ReadFromFile(const string& path) {
 	int toeic, entryScore;
 
 	while (getline(inputFile, line)) {
-		//cout << line << endl;
-
 		if (line.rfind(dataTagMap.at(FULL_NAME), 0) == 0) {
 			name = line.substr(dataTagMap.at(FULL_NAME).length());
 			name = Helper::RemoveSpacesAtEnds(name);
@@ -105,9 +138,8 @@ void Manager::ReadFromFile(const string& path) {
 			bestReward = line.substr(dataTagMap.at(BEST_REWARD).length());
 			bestReward = Helper::RemoveSpacesAtEnds(bestReward);
 
-			shared_ptr<Student> stu(new GoodStudent(name, dob, gender, phone, university, gradeLevel, gpa, bestReward));
-			studentList.push_back(stu);
-			goodCnt++;
+			shared_ptr<GoodStudent> stu(new GoodStudent(name, dob, gender, phone, university, gradeLevel, gpa, bestReward));
+			goodList.push_back(stu);
 		}
 
 		if (line.rfind(dataTagMap.at(ENGLISH_SCORE), 0) == 0) {
@@ -129,20 +161,73 @@ void Manager::ReadFromFile(const string& path) {
 				return;
 			}
 
-			shared_ptr<Student> stu(new NormalStudent(name, dob, gender, phone, university, gradeLevel, toeic, entryScore));
-			studentList.push_back(stu);
-			normalCnt++;
+			shared_ptr<NormalStudent> stu(new NormalStudent(name, dob, gender, phone, university, gradeLevel, toeic, entryScore));
+			normalList.push_back(stu);
 		}
 	}
 
 	inputFile.close();
 
 	printf("Input reading completed. Added %d good and %d normal students. Total %d.\n", 
-		goodCnt, normalCnt, goodCnt + normalCnt);
-	ShowAll();
+		goodList.size(), normalList.size(), goodList.size() + normalList.size());
+	//ShowAll();
 }
 
 void Manager::ShowAll() {
-	for (shared_ptr<Student> s : studentList) s->ShowInfo();
+	for (shared_ptr<GoodStudent>& s : goodList) s->ShowInfo();
+	cout << "End of Good list.\n" << endl;
+
+	for (shared_ptr<NormalStudent>& s : normalList) s->ShowInfo();
+	cout << "End of Normal list.\n" << endl;
+}
+
+void Manager::ShowAllContactData() {
+	priority_queue<shared_ptr<Student>, vector<shared_ptr<Student>>, DataComparator> q;
+	for (shared_ptr<GoodStudent>& s : goodList) q.push(s);
+	for (shared_ptr<NormalStudent>& s : normalList) q.push(s);
+
+	while (!q.empty()) {
+		q.top()->ShowInfo();
+		q.pop();
+	}
 	cout << "End of list\n";
+}
+
+vector<shared_ptr<Student>> Manager::GetCandidateList(int num) {
+	int goodCnt = goodList.size();
+	int normalCnt = normalList.size();
+	if (num > goodCnt + normalCnt) {
+		printf("Requested number %d > total student count %d. Get all students.\n", num, goodCnt + normalCnt);
+		num = goodCnt + normalCnt;
+	}
+
+	vector<shared_ptr<Student>> res;
+	priority_queue<shared_ptr<Student>, vector<shared_ptr<Student>>, GradeComparator> q;
+	//get all good students ordered by custom comparator
+	for (shared_ptr<GoodStudent>& s : goodList) {
+		q.push(s);
+	}
+
+	if (num <= goodCnt) {
+		for (int i = 0; i < num; i++) {
+			res.push_back(q.top());
+			q.pop();
+		}
+	}
+	else {
+		for (shared_ptr<NormalStudent>& s : normalList) {
+			q.push(s);
+		}
+		for (int i = 0; i < num; i++) {
+			res.push_back(q.top());
+			q.pop();
+		}
+	}
+
+	cout << "All suitable candidates found:\n" << endl;
+	for (int i = 0; i < num; i++) {
+		res[i]->ShowInfo();
+	} cout << "End of list.\n" << endl;
+
+	return res;
 }

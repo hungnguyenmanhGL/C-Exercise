@@ -8,7 +8,7 @@ private:
     int entryScore; // 0 <= value <= 10
 
 public:
-    NormalStudent() {};
+    NormalStudent();
 
     NormalStudent(string name, Date doB, Gender gender, string phone, string uni, int gradeLvl, int englishScore, int entryScore);
 

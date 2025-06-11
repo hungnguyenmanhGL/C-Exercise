@@ -93,23 +93,6 @@ string Helper::GetPhoneByInput() {
 	return phone;
 }
 
-string Helper::GetEmailByInput() {
-	string email;
-	bool isValid = false;
-	while (!isValid) {
-		try {
-			cout << "Email: ";
-			getline(cin, email);
-			isValid = IsEmailValid(email);
-			if (!isValid) throw EmailException("Invalid email number. Try again");
-		}
-		catch (const EmailException& emailExcept) {
-			cout << "Email exception: " << emailExcept.what() << endl;
-		}
-	}
-	return email;
-}
-
 int Helper::GetIntByInput(int lowerLim, int upperLim) {
 	int res;
 	if (lowerLim >= upperLim) {
@@ -182,34 +165,6 @@ bool Helper::IsPhoneValid(const string& phone) {
 
 	if (phoneStarterSet.find(phone.substr(0, 3)) == phoneStarterSet.end()) {
 		cout << "Invalid 3 starting digit. Must be 090, 098, 091, 031, 035, 038." << endl;
-		return false;
-	}
-	return true;
-}
-
-bool Helper::IsEmailValid(const string& email) {
-	bool hasSymbol = false;
-	for (int i = 0; i < email.length(); i++) {
-		if (email[i] == '@') {
-			if (hasSymbol) {
-				cout << "Email can't have more than 1 @." << endl;
-				return false;
-			}
-			if (i == 0) {
-				cout << "@ can't be the first character." << endl;
-				return false;
-			}
-			hasSymbol = true;
-		}
-		if (invalidCharSet.find(email[i]) != invalidCharSet.end()) {
-			cout << "Character " << email[i] << " is not allowed in email." << endl;
-			return false;
-		}
-	}
-
-	int tldStart = email.length() - 1 - 3;
-	if (emailEndSet.find(email.substr(tldStart, 4)) == emailEndSet.end()) {
-		cout << "Top-level domain not found in email." << endl;
 		return false;
 	}
 	return true;

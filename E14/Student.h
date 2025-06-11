@@ -15,6 +15,8 @@ protected:
 	string university;
 	int gradeLevel;
 
+	bool isGood;
+
 public:
 	Student() {};
 
@@ -24,9 +26,13 @@ public:
 
 	virtual void ShowInfo();
 
+	void ShowContactData();
+
 	//getters
 	string GetFullName() { return this->fullName; }
 
 	string GetPhone() { return this->phone; }
+
+	bool IsGood() { return this->isGood; }
 };
 

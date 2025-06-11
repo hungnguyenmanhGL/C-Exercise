@@ -8,7 +8,7 @@ private:
     string bestReward;
 
 public:
-    GoodStudent() {};
+    GoodStudent();
 
     GoodStudent(string name, Date doB, Gender gender, string phone, string uni, int gradeLvl, float gpa, string bestReward);
 

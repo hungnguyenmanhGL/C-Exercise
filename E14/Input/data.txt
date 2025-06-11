@@ -87,3 +87,111 @@ University: University of Natural Sciences
 Grade level: 5
 English score: 700
 Entry score: 9
+--------------------------------------------------
+Full name: Pham Mai Huong
+Date of birth: 03/03/2003
+Gender: 1
+Phone: 0905678901
+University: Vin University
+Grade level: 2
+GPA: 3.95
+Best Reward: Global Leadership Program Scholarship
+--------------------------------------------------
+Full name: Vo Van Hung
+Date of birth: 22/10/2001
+Gender: 0
+Phone: 0387654321
+University: Ho Chi Minh City University of Technology
+Grade level: 4
+GPA: 3.8
+Best Reward: Research Grant Recipient
+--------------------------------------------------
+Full name: Nguyen Thi Yen Nhi
+Date of birth: 18/06/2004
+Gender: 1
+Phone: 0912345678
+University: University of Social Sciences and Humanities
+Grade level: 1
+GPA: 3.75
+Best Reward: Volunteer of the Year Award
+--------------------------------------------------
+Full name: Dao Duy Minh
+Date of birth: 09/01/2002
+Gender: 0
+Phone: 0351234567
+University: Hanoi University of Civil Engineering
+Grade level: 3
+GPA: 3.8
+Best Reward: Academic Excellence Certificate
+--------------------------------------------------
+Full name: Bui Xuan Quy
+Date of birth: 14/12/2000
+Gender: 0
+Phone: 0987654321
+University: Da Nang University of Technology
+Grade level: 5
+GPA: 3.9
+Best Reward: Top Graduate Honor
+--------------------------------------------------
+Full name: Tran Minh Tri
+Date of birth: 07/07/2003
+Gender: 0
+Phone: 0319876543
+University: Thang Long University
+Grade level: 2
+English score: 650
+Entry score: 6
+--------------------------------------------------
+Full name: Le Thi Thao
+Date of birth: 29/02/2004
+Gender: 1
+Phone: 0908765432
+University: Banking Academy
+Grade level: 1
+English score: 700
+Entry score: 7
+--------------------------------------------------
+Full name: Hoang Quoc Viet
+Date of birth: 01/01/2001
+Gender: 0
+Phone: 0385432109
+University: National Economics University
+Grade level: 4
+English score: 680
+Entry score: 8
+--------------------------------------------------
+Full name: Dang Van An
+Date of birth: 11/11/2002
+Gender: 0
+Phone: 0913456789
+University: Transport and Communications University
+Grade level: 3
+English score: 700
+Entry score: 6
+--------------------------------------------------
+Full name: Trinh Minh Duc
+Date of birth: 04/05/2000
+Gender: 0
+Phone: 0356789012
+University: University of Science and Technology, HCMC
+Grade level: 5
+English score: 620
+Entry score: 9
+--------------------------------------------------
+Full name: Phan Kieu Loan
+Date of birth: 19/09/2003
+Gender: 1
+Phone: 0989012345
+University: Hanoi University
+Grade level: 2
+English score: 750
+Entry score: 7
+--------------------------------------------------
+Full name: Chu Ba Thien
+Date of birth: 17/07/2002
+Gender: 0
+Phone: 0907778889
+University: Hue University
+Grade level: 3
+English score: 680
+Entry score: 8
