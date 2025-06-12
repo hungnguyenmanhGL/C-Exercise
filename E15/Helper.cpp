@@ -143,7 +143,7 @@ bool Helper::Is31DayMonth(int month) {
 }
 
 void Helper::PrintCommandList() {
-	for (int i = 0; i < Command::GET_ENROLL_COUNT_IN_YEAR; i++) {
+	for (int i = 0; i <= Command::GET_ENROLL_COUNT_IN_YEAR; i++) {
 		printf(" %d = %s\n", i, commandMap[(Command)i].c_str());
 	}
 	printf(" %d = %s\n", Command::QUIT, commandMap[Command::QUIT].c_str());

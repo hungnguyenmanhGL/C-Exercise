@@ -36,6 +36,8 @@ static unordered_map<Command, string> commandMap{
 	{QUIT, "quit"}
 };
 
+static const int smallestEnrollYear = 2000;
+
 class Helper
 {
 public:

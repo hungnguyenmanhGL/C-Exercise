@@ -56,7 +56,7 @@ void Manager::AddStudentByInput() {
 		Date dob = Helper::GetDateByInput();
 
 		cout << "Enroll year. ";
-		int enrollYear = Helper::GetIntByInput(1800);
+		int enrollYear = Helper::GetIntByInput(smallestEnrollYear);
 
 		cout << "Entry score. ";
 		int entryScore = Helper::GetIntByInput(0, 10);
@@ -160,7 +160,7 @@ void Manager::ShowStudentsWithHighestSemesterScore() {
 void Manager::ShowEnrollCountInYear(const int& year) {
 	for (Faculty& fa : facultyList) {
 		fa.PrintName();
-		fa.GetStudentCountByEnrollYear(year);
+		cout << fa.GetStudentCountByEnrollYear(year) << endl;
 	}
 }
 
@@ -171,7 +171,7 @@ void Manager::AddTestData() {
 		string id = Helper::GenRandomId(gen);
 		string name = Helper::GenRandomName(gen);
 		Date dob = Helper::GenRandomDob(gen);
-		int enrollYear = Helper::GenRandomInt(gen, 2000, 2020);
+		int enrollYear = Helper::GenRandomInt(gen, smallestEnrollYear, 2020);
 		int entryScore = Helper::GenRandomInt(gen, 6, 10);
 		vector<StudyResult> resList = Helper::GenRandomStudyResults(gen);
 

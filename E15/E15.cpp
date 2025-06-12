@@ -58,7 +58,7 @@ void MainLoop() {
             break;
         }
         case Command::GET_ENROLL_COUNT_IN_YEAR: {
-            int year = Helper::GetIntByInput(1500);
+            int year = Helper::GetIntByInput(smallestEnrollYear);
             manager.ShowEnrollCountInYear(year);
             break;
         }
