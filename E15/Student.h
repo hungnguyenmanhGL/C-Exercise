@@ -36,6 +36,8 @@ public:
 
 	float GetHighestSemesterScore();
 
+	float GetTotalAverageScore();
+
 	//getters
 	bool IsFullTime() { return this->isFullTime; }
 

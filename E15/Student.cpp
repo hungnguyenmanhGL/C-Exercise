@@ -2,7 +2,9 @@
 
 Student::Student(string id, string name, Date dob, int enrollYear, int entryScore, vector<StudyResult>& resList)
 	: id(id), name(name), dob(dob), enrollYear(enrollYear), entryScore(entryScore), resultList(resList)
-{}
+{
+	this->isFullTime = false;
+}
 
 Student::Student(Student& s) {
 	this->id = s.id;
@@ -47,4 +49,12 @@ float Student::GetHighestSemesterScore() {
 			res = resultList[i].GetAvgScore();
 	}
 	return res;
+}
+
+float Student::GetTotalAverageScore() {
+	float res = 0;
+	for (StudyResult& s : resultList) {
+		res += s.GetAvgScore();
+	}
+	return res / resultList.size();
 }
