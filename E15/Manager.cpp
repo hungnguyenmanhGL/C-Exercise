@@ -114,6 +114,7 @@ void Manager::ShowAll() {
 }
 
 void Manager::ShowFullCountFaculty() {
+	PrintFacultyIndexPrompt();
 	int index = Helper::GetIntByInput(0, facultyList.size() - 1);
 	facultyList[index].PrintName();
 	cout << facultyList[index].GetFullTimeCount() << endl;
